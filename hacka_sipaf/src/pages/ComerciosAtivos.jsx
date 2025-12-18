@@ -10,6 +10,8 @@ import FilterBar from '../components/ui/FilterBar'
 import Select from '../components/ui/Select'
 import Badge from '../components/ui/Badge'
 import DetailModal from '../components/ui/DetailModal'
+import MapLegend from '../components/map/MapLegend'
+import { markerIcons } from '../components/map/CustomMarker'
 
 // Fix para ícones do Leaflet
 delete L.Icon.Default.prototype._getIconUrl
@@ -25,6 +27,11 @@ function ComerciosAtivos() {
   const [mostrarAbertosNoite, setMostrarAbertosNoite] = useState(false)
   const [selectedComercio, setSelectedComercio] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [visibleLayers, setVisibleLayers] = useState({
+    comercios: true,
+    abertosNoite: true,
+    quadras: true
+  })
 
   const comerciosFiltrados = useMemo(() => {
     return comerciosMock.filter(comercio => {
@@ -115,7 +122,7 @@ function ComerciosAtivos() {
       {/* Mapa e Lista */}
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-6 p-6 overflow-y-auto">
         {/* Mapa */}
-        <div className="rounded-2xl bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden shadow-lg">
+        <div className="rounded-2xl bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden shadow-lg relative">
           <MapContainer
             center={[-15.7925, -47.8850]}
             zoom={14}
@@ -127,7 +134,7 @@ function ComerciosAtivos() {
             />
             
             {/* Quadras */}
-            {scsQuadras.features.map(quadra => (
+            {visibleLayers.quadras && scsQuadras.features.map(quadra => (
               <Polygon
                 key={quadra.properties.id}
                 positions={quadra.geometry.coordinates[0].map(coord => [coord[1], coord[0]])}
@@ -147,27 +154,76 @@ function ComerciosAtivos() {
               </Polygon>
             ))}
 
-            {/* Comércios */}
-            {comerciosFiltrados.map(comercio => (
+            {/* Comércios Abertos à Noite */}
+            {visibleLayers.abertosNoite && comerciosFiltrados.filter(c => c.abertoNoite).map(comercio => (
               <Marker
                 key={comercio.id}
                 position={[comercio.coordenadas[1], comercio.coordenadas[0]]}
+                icon={markerIcons.comercioAtivo('#f97316', true)}
               >
                 <Popup>
                   <div className="space-y-2">
                     <h3 className="text-lg font-bold text-neutral-900 dark:text-white">{comercio.nome}</h3>
                     <p className="text-sm text-neutral-600 dark:text-neutral-400">{getTipoNome(comercio.tipo)}</p>
-                    {comercio.abertoNoite && (
-                      <span className="inline-flex items-center gap-1 mt-2 px-2 py-1 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 text-xs font-semibold">
-                        <FiMoon className="w-3 h-3" />
-                        Aberto à noite
-                      </span>
-                    )}
+                    <span className="inline-flex items-center gap-1 mt-2 px-2 py-1 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 text-xs font-semibold">
+                      <FiMoon className="w-3 h-3" />
+                      Aberto à noite
+                    </span>
+                  </div>
+                </Popup>
+              </Marker>
+            ))}
+
+            {/* Comércios Regulares */}
+            {visibleLayers.comercios && comerciosFiltrados.filter(c => !c.abertoNoite && c.status === 'ativo').map(comercio => (
+              <Marker
+                key={comercio.id}
+                position={[comercio.coordenadas[1], comercio.coordenadas[0]]}
+                icon={markerIcons.comercioAtivo('#f59e0b', false)}
+              >
+                <Popup>
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-bold text-neutral-900 dark:text-white">{comercio.nome}</h3>
+                    <p className="text-sm text-neutral-600 dark:text-neutral-400">{getTipoNome(comercio.tipo)}</p>
                   </div>
                 </Popup>
               </Marker>
             ))}
           </MapContainer>
+
+          {/* Legenda */}
+          <MapLegend
+            title="Legenda do Mapa"
+            items={[
+              {
+                id: 'abertosNoite',
+                label: 'Abertos à Noite',
+                color: '#f97316',
+                icon: <FiMoon className="w-4 h-4" />,
+                count: comerciosFiltrados.filter(c => c.abertoNoite).length,
+                visible: visibleLayers.abertosNoite
+              },
+              {
+                id: 'comercios',
+                label: 'Comércios Ativos',
+                color: '#f59e0b',
+                icon: <FiShoppingBag className="w-4 h-4" />,
+                count: comerciosFiltrados.filter(c => !c.abertoNoite && c.status === 'ativo').length,
+                visible: visibleLayers.comercios
+              },
+              {
+                id: 'quadras',
+                label: 'Quadras SCS',
+                color: '#ef4444',
+                icon: <FiMapPin className="w-4 h-4" />,
+                count: scsQuadras.features.length,
+                visible: visibleLayers.quadras
+              }
+            ]}
+            onToggleItem={(itemId, visible) => {
+              setVisibleLayers(prev => ({ ...prev, [itemId]: visible }))
+            }}
+          />
         </div>
 
         {/* Lista de Comércios */}

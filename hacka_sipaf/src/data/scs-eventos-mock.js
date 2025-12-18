@@ -95,6 +95,102 @@ export const eventosMock = [
       qrScans: 120,
       confirmacoes: 45
     }
+  },
+  {
+    id: 'evt-005',
+    titulo: 'Festival Gastronômico SCS',
+    descricao: 'Restaurantes da região com pratos especiais e degustações.',
+    quadra: 'scs-1',
+    data: new Date().toISOString().split('T')[0], // Hoje
+    horario: '18:00',
+    horarioFim: '23:00',
+    tipo: 'gastronomico',
+    publico: 'todas-idades',
+    impactoEsperado: 'alto',
+    nivelDestaque: 'alto',
+    necessidadeApoio: ['seguranca'],
+    riscoOperacional: 'medio',
+    qrCode: 'https://scsconecta.df.gov.br/evento/evt-005',
+    status: 'aprovado',
+    criadoPor: 'comunidade',
+    imagem: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80',
+    engajamento: {
+      visualizacoes: 3200,
+      qrScans: 890,
+      confirmacoes: 450
+    }
+  },
+  {
+    id: 'evt-006',
+    titulo: 'Exposição: Arte Urbana Brasiliense',
+    descricao: 'Exposição de grafite e arte de rua com artistas locais.',
+    quadra: 'scs-6',
+    data: new Date(Date.now() - 86400000).toISOString().split('T')[0], // Ontem
+    horario: '14:00',
+    horarioFim: '20:00',
+    tipo: 'cultural',
+    publico: 'todas-idades',
+    impactoEsperado: 'medio',
+    nivelDestaque: 'alto',
+    necessidadeApoio: [],
+    riscoOperacional: 'baixo',
+    qrCode: 'https://scsconecta.df.gov.br/evento/evt-006',
+    status: 'aprovado',
+    criadoPor: 'prefeitura',
+    imagem: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&q=80',
+    engajamento: {
+      visualizacoes: 1800,
+      qrScans: 420,
+      confirmacoes: 210
+    }
+  },
+  {
+    id: 'evt-007',
+    titulo: 'Show de Pagode - Quadra 2',
+    descricao: 'Apresentação de grupo local de pagode com participações especiais.',
+    quadra: 'scs-2',
+    data: new Date(Date.now() + 2 * 86400000).toISOString().split('T')[0], // Em 2 dias
+    horario: '20:00',
+    horarioFim: '02:00',
+    tipo: 'show',
+    publico: 'jovens',
+    impactoEsperado: 'alto',
+    nivelDestaque: 'medio',
+    necessidadeApoio: ['seguranca', 'iluminacao'],
+    riscoOperacional: 'medio',
+    qrCode: 'https://scsconecta.df.gov.br/evento/evt-007',
+    status: 'aprovado',
+    criadoPor: 'comerciante',
+    imagem: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80',
+    engajamento: {
+      visualizacoes: 2800,
+      qrScans: 750,
+      confirmacoes: 200
+    }
+  },
+  {
+    id: 'evt-008',
+    titulo: 'Feira de Artesanato Local',
+    descricao: 'Feira com artesãos do DF expondo e vendendo produtos artesanais.',
+    quadra: 'scs-5',
+    data: new Date(Date.now() + 3 * 86400000).toISOString().split('T')[0], // Em 3 dias
+    horario: '09:00',
+    horarioFim: '17:00',
+    tipo: 'feira',
+    publico: 'todas-idades',
+    impactoEsperado: 'medio',
+    nivelDestaque: 'medio',
+    necessidadeApoio: [],
+    riscoOperacional: 'baixo',
+    qrCode: 'https://scsconecta.df.gov.br/evento/evt-008',
+    status: 'aprovado',
+    criadoPor: 'prefeitura',
+    imagem: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80',
+    engajamento: {
+      visualizacoes: 1200,
+      qrScans: 280,
+      confirmacoes: 150
+    }
   }
 ]
 

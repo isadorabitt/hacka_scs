@@ -5,7 +5,7 @@ import Header from '../components/layout/Header'
 // Importar imagem de fundo do SCS (adicione sua imagem em src/assets/images/scs/scs-background.jpg)
 // import scsBackground from '../assets/images/scs/scs-background.jpg'
 
-function LandingPage() {
+function SCSAtivo() {
   const { theme } = useTheme()
   const isDark = theme === 'dark'
 
@@ -110,4 +110,5 @@ function LandingPage() {
   )
 }
 
-export default LandingPage
+export default SCSAtivo
+
