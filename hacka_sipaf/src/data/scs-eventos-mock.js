@@ -17,6 +17,7 @@ export const eventosMock = [
     qrCode: 'https://scsconecta.df.gov.br/evento/evt-001',
     status: 'aprovado',
     criadoPor: 'comerciante',
+    imagem: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80', // Evento cultural no SCS - substitua por foto real do festival
     engajamento: {
       visualizacoes: 1250,
       qrScans: 340,
@@ -40,6 +41,7 @@ export const eventosMock = [
     qrCode: 'https://scsconecta.df.gov.br/evento/evt-002',
     status: 'aprovado',
     criadoPor: 'prefeitura',
+    imagem: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80', // Feira No Setor - substitua por foto real da feira no SCS
     engajamento: {
       visualizacoes: 890,
       qrScans: 210,
@@ -63,6 +65,7 @@ export const eventosMock = [
     qrCode: 'https://scsconecta.df.gov.br/evento/evt-003',
     status: 'aprovado',
     criadoPor: 'comerciante',
+    imagem: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80', // Happy Hour SCS 2 - substitua por foto real dos bares do SCS
     engajamento: {
       visualizacoes: 2100,
       qrScans: 580,
@@ -86,6 +89,7 @@ export const eventosMock = [
     qrCode: 'https://scsconecta.df.gov.br/evento/evt-004',
     status: 'aprovado',
     criadoPor: 'prefeitura',
+    imagem: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80', // Galeria SCS 6 - substitua por foto real da galeria
     engajamento: {
       visualizacoes: 450,
       qrScans: 120,

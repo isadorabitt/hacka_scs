@@ -182,22 +182,46 @@ function ComerciosAtivos() {
             {comerciosFiltrados.map(comercio => (
               <div
                 key={comercio.id}
-                className="bg-command-surface rounded-xl p-6 border border-command-border"
+                className="bg-command-surface rounded-xl overflow-hidden border border-command-border"
               >
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h3 className="text-xl font-bold text-command-text mb-1">{comercio.nome}</h3>
-                    <span className="inline-block px-3 py-1 rounded-full bg-command-accent/10 text-command-accent text-sm font-medium">
-                      {getTipoNome(comercio.tipo)}
-                    </span>
+                {/* Imagem do Comércio */}
+                {comercio.imagem && (
+                  <div className="relative h-40 w-full overflow-hidden">
+                    <img 
+                      src={comercio.imagem} 
+                      alt={comercio.nome}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                      onError={(e) => {
+                        e.target.src = 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80'
+                      }}
+                    />
+                    {/* Badge sobre a imagem */}
+                    {comercio.badgeAbertoNoite && (
+                      <div className="absolute top-3 right-3 inline-flex items-center gap-1 px-3 py-1 rounded-full bg-amber-500/90 backdrop-blur-sm text-white text-xs font-semibold">
+                        <FiMoon />
+                        Aberto à noite
+                      </div>
+                    )}
+                    {/* Overlay escuro sutil */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   </div>
-                  {comercio.badgeAbertoNoite && (
-                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-amber-500/20 text-amber-500 text-xs font-semibold">
-                      <FiMoon />
-                      Aberto à noite
-                    </span>
-                  )}
-                </div>
+                )}
+
+                <div className="p-6">
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <h3 className="text-xl font-bold text-command-text mb-1">{comercio.nome}</h3>
+                      <span className="inline-block px-3 py-1 rounded-full bg-command-accent/10 text-command-accent text-sm font-medium">
+                        {getTipoNome(comercio.tipo)}
+                      </span>
+                    </div>
+                    {comercio.badgeAbertoNoite && !comercio.imagem && (
+                      <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-amber-500/20 text-amber-500 text-xs font-semibold">
+                        <FiMoon />
+                        Aberto à noite
+                      </span>
+                    )}
+                  </div>
 
                 <div className="space-y-2 mb-4">
                   <div className="flex items-center gap-2 text-sm text-command-text-muted">
@@ -228,6 +252,7 @@ function ComerciosAtivos() {
                     </p>
                   </div>
                 )}
+                </div>
               </div>
             ))}
           </div>

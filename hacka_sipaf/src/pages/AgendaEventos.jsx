@@ -124,18 +124,32 @@ function AgendaEventos() {
           {eventosFiltrados.map(evento => (
             <div
               key={evento.id}
-              className="bg-command-surface rounded-xl p-6 border border-command-border hover:border-command-accent/50 transition-all cursor-pointer"
+              className="bg-command-surface rounded-xl overflow-hidden border border-command-border hover:border-command-accent/50 transition-all cursor-pointer"
               onClick={() => setEventoSelecionado(evento)}
             >
-              {/* Badge de Destaque */}
-              {evento.nivelDestaque === 'alto' && (
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-500 text-xs font-semibold mb-3">
-                  ⭐ Destaque
-                </div>
-              )}
+              {/* Imagem do Evento */}
+              <div className="relative h-48 w-full overflow-hidden">
+                <img 
+                  src={evento.imagem} 
+                  alt={evento.titulo}
+                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                  onError={(e) => {
+                    e.target.src = 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80'
+                  }}
+                />
+                {/* Badge de Destaque sobre a imagem */}
+                {evento.nivelDestaque === 'alto' && (
+                  <div className="absolute top-3 right-3 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/90 backdrop-blur-sm text-white text-xs font-semibold">
+                    ⭐ Destaque
+                  </div>
+                )}
+                {/* Overlay escuro sutil */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+              </div>
 
-              <h3 className="text-xl font-bold text-command-text mb-2">{evento.titulo}</h3>
-              <p className="text-command-text-muted text-sm mb-4 line-clamp-2">{evento.descricao}</p>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-command-text mb-2">{evento.titulo}</h3>
+                <p className="text-command-text-muted text-sm mb-4 line-clamp-2">{evento.descricao}</p>
 
               <div className="space-y-2 mb-4">
                 <div className="flex items-center gap-2 text-sm text-command-text-muted">
@@ -193,6 +207,7 @@ function AgendaEventos() {
                   <FiMaximize2 />
                   <span>QR Code</span>
                 </button>
+              </div>
               </div>
             </div>
           ))}

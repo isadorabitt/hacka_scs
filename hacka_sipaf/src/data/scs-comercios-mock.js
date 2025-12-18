@@ -20,7 +20,8 @@ export const comerciosMock = [
     descricao: 'Bar tradicional com música ao vivo e petiscos',
     telefone: '(61) 99999-0001',
     status: 'ativo',
-    badgeAbertoNoite: true
+    badgeAbertoNoite: true,
+    imagem: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80' // Bar do João SCS 1 - substitua por foto real do estabelecimento
   },
   {
     id: 'com-002',
@@ -42,7 +43,8 @@ export const comerciosMock = [
     descricao: 'Culinária regional com pratos típicos',
     telefone: '(61) 99999-0002',
     status: 'ativo',
-    badgeAbertoNoite: true
+    badgeAbertoNoite: true,
+    imagem: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80' // Restaurante Sabor do Cerrado SCS 1 - substitua por foto real
   },
   {
     id: 'com-003',
@@ -64,7 +66,8 @@ export const comerciosMock = [
     descricao: 'Serviços contábeis e consultoria',
     telefone: '(61) 99999-0003',
     status: 'ativo',
-    badgeAbertoNoite: false
+    badgeAbertoNoite: false,
+    imagem: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80' // Escritório
   },
   {
     id: 'com-004',
@@ -79,7 +82,8 @@ export const comerciosMock = [
     telefone: null,
     status: 'vazio',
     badgeAbertoNoite: false,
-    tempoVazio: '8 meses'
+    tempoVazio: '8 meses',
+    imagem: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80' // Loja vazia SCS 3 - substitua por foto real do imóvel
   },
   {
     id: 'com-005',
@@ -102,7 +106,8 @@ export const comerciosMock = [
     telefone: '(61) 3333-4444',
     status: 'ativo',
     badgeAbertoNoite: false,
-    disponivelParaEventos: true
+    disponivelParaEventos: true,
+    imagem: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80' // Galerias SCS 5 - substitua por foto real das galerias do SCS
   },
   {
     id: 'com-006',
@@ -125,7 +130,8 @@ export const comerciosMock = [
     telefone: '(61) 3333-5555',
     status: 'ativo',
     badgeAbertoNoite: true,
-    disponivelParaEventos: true
+    disponivelParaEventos: true,
+    imagem: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80' // Anfiteatro SCS 6 - substitua por foto real do anfiteatro
   }
 ]
 

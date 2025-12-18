@@ -207,20 +207,47 @@ function VacanciaReativacao() {
             {itensFiltrados.map(item => (
               <div
                 key={item.id}
-                className="bg-command-surface rounded-xl p-6 border border-command-border"
+                className="bg-command-surface rounded-xl overflow-hidden border border-command-border"
               >
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h3 className="text-xl font-bold text-command-text mb-1">{item.nome}</h3>
-                    <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${
+                {/* Imagem do Item */}
+                {item.imagem && (
+                  <div className="relative h-40 w-full overflow-hidden">
+                    <img 
+                      src={item.imagem} 
+                      alt={item.nome}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                      onError={(e) => {
+                        e.target.src = 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80'
+                      }}
+                    />
+                    {/* Badge sobre a imagem */}
+                    <div className={`absolute top-3 right-3 px-3 py-1 rounded-full backdrop-blur-sm text-white text-xs font-semibold ${
                       item.status === 'vazio' 
-                        ? 'bg-blue-500/20 text-blue-500'
-                        : 'bg-green-500/20 text-green-500'
+                        ? 'bg-blue-500/90'
+                        : 'bg-green-500/90'
                     }`}>
                       {item.status === 'vazio' ? 'Imóvel Vazio' : 'Espaço Público'}
-                    </span>
+                    </div>
+                    {/* Overlay escuro sutil */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   </div>
-                </div>
+                )}
+
+                <div className="p-6">
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <h3 className="text-xl font-bold text-command-text mb-1">{item.nome}</h3>
+                      {!item.imagem && (
+                        <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${
+                          item.status === 'vazio' 
+                            ? 'bg-blue-500/20 text-blue-500'
+                            : 'bg-green-500/20 text-green-500'
+                        }`}>
+                          {item.status === 'vazio' ? 'Imóvel Vazio' : 'Espaço Público'}
+                        </span>
+                      )}
+                    </div>
+                  </div>
 
                 <div className="space-y-2 mb-4">
                   <div className="flex items-center gap-2 text-sm text-command-text-muted">
@@ -254,6 +281,7 @@ function VacanciaReativacao() {
                     </button>
                   </div>
                 )}
+                </div>
               </div>
             ))}
           </div>
