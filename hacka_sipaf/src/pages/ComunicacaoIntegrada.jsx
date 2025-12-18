@@ -57,22 +57,22 @@ function ComunicacaoIntegrada() {
   }
 
   return (
-    <div className="h-full overflow-auto bg-command-bg p-6">
+    <div className="h-full overflow-y-auto bg-white dark:bg-neutral-900 p-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-command-text mb-2 flex items-center gap-3">
-            <FiShare2 className="text-command-accent" />
+          <h1 className="text-4xl font-bold text-neutral-900 dark:text-white mb-2 flex items-center gap-3">
+            <FiShare2 className="text-orange-500" />
             Comunicação Integrada
           </h1>
-          <p className="text-command-text-muted">
+          <p className="text-neutral-900 dark:text-white-muted">
             Ampliar o alcance dos eventos, comércios e alertas do SCS utilizando canais digitais consolidados
           </p>
         </div>
 
         {/* Seleção de Evento */}
-        <div className="bg-command-surface rounded-xl p-6 border border-command-border mb-6">
-          <label className="block text-sm font-medium text-command-text-muted mb-2">
+        <div className="bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl rounded-xl p-6 border border-neutral-200 dark:border-neutral-700 mb-6">
+          <label className="block text-sm font-medium text-neutral-900 dark:text-white-muted mb-2">
             Selecionar Evento
           </label>
           <select
@@ -81,7 +81,7 @@ function ComunicacaoIntegrada() {
               const evento = eventosMock.find(evt => evt.id === e.target.value)
               setEventoSelecionado(evento)
             }}
-            className="w-full px-4 py-2 rounded-lg bg-command-bg border border-command-border text-command-text"
+            className="w-full px-4 py-2 rounded-lg bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-neutral-900 dark:text-white"
           >
             {eventosMock.map(evt => (
               <option key={evt.id} value={evt.id}>{evt.titulo}</option>
@@ -92,23 +92,23 @@ function ComunicacaoIntegrada() {
         {/* Canais */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Instagram */}
-          <div className="bg-command-surface rounded-xl p-6 border border-command-border">
+          <div className="bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl rounded-xl p-6 border border-neutral-200 dark:border-neutral-700">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
                 <FiInstagram className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-command-text">Instagram</h3>
-                <p className="text-xs text-command-text-muted">Alcance e Divulgação</p>
+                <h3 className="text-lg font-bold text-neutral-900 dark:text-white">Instagram</h3>
+                <p className="text-xs text-neutral-900 dark:text-white-muted">Alcance e Divulgação</p>
               </div>
             </div>
 
             <div className="space-y-4">
               {/* Feed */}
               <div>
-                <h4 className="text-sm font-semibold text-command-text mb-2">Post para Feed</h4>
-                <div className="bg-command-bg rounded-lg p-4 mb-3 border border-command-border">
-                  <p className="text-sm text-command-text-muted whitespace-pre-line">
+                <h4 className="text-sm font-semibold text-neutral-900 dark:text-white mb-2">Post para Feed</h4>
+                <div className="bg-white dark:bg-neutral-900 rounded-lg p-4 mb-3 border border-neutral-200 dark:border-neutral-700">
+                  <p className="text-sm text-neutral-900 dark:text-white-muted whitespace-pre-line">
                     {conteudoPorCanal.instagram.feed.legenda}
                   </p>
                 </div>
@@ -123,15 +123,15 @@ function ComunicacaoIntegrada() {
 
               {/* Story */}
               <div>
-                <h4 className="text-sm font-semibold text-command-text mb-2">Story</h4>
-                <div className="bg-command-bg rounded-lg p-4 mb-3 border border-command-border">
-                  <p className="text-sm text-command-text whitespace-pre-line">
+                <h4 className="text-sm font-semibold text-neutral-900 dark:text-white mb-2">Story</h4>
+                <div className="bg-white dark:bg-neutral-900 rounded-lg p-4 mb-3 border border-neutral-200 dark:border-neutral-700">
+                  <p className="text-sm text-neutral-900 dark:text-white whitespace-pre-line">
                     {conteudoPorCanal.instagram.story.texto}
                   </p>
                 </div>
                 <button
                   onClick={() => handleCopiar(conteudoPorCanal.instagram.story.texto)}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-command-accent/10 text-command-accent hover:bg-command-accent/20 transition-colors"
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-orange-500/10 text-orange-500 hover:bg-orange-500/20 transition-colors border border-orange-500/20"
                 >
                   <FiCopy />
                   <span>Copiar Texto</span>
@@ -141,22 +141,22 @@ function ComunicacaoIntegrada() {
           </div>
 
           {/* WhatsApp */}
-          <div className="bg-command-surface rounded-xl p-6 border border-command-border">
+          <div className="bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl rounded-xl p-6 border border-neutral-200 dark:border-neutral-700">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 rounded-lg bg-green-500 flex items-center justify-center">
                 <FiMessageCircle className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-command-text">WhatsApp</h3>
-                <p className="text-xs text-command-text-muted">Ação Rápida</p>
+                <h3 className="text-lg font-bold text-neutral-900 dark:text-white">WhatsApp</h3>
+                <p className="text-xs text-neutral-900 dark:text-white-muted">Ação Rápida</p>
               </div>
             </div>
 
             <div className="space-y-4">
               <div>
-                <h4 className="text-sm font-semibold text-command-text mb-2">Mensagem</h4>
-                <div className="bg-command-bg rounded-lg p-4 mb-3 border border-command-border">
-                  <p className="text-sm text-command-text-muted whitespace-pre-line">
+                <h4 className="text-sm font-semibold text-neutral-900 dark:text-white mb-2">Mensagem</h4>
+                <div className="bg-white dark:bg-neutral-900 rounded-lg p-4 mb-3 border border-neutral-200 dark:border-neutral-700">
+                  <p className="text-sm text-neutral-900 dark:text-white-muted whitespace-pre-line">
                     {conteudoPorCanal.whatsapp.mensagem}
                   </p>
                 </div>
@@ -178,25 +178,25 @@ function ComunicacaoIntegrada() {
           </div>
 
           {/* Telegram */}
-          <div className="bg-command-surface rounded-xl p-6 border border-command-border">
+          <div className="bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl rounded-xl p-6 border border-neutral-200 dark:border-neutral-700">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 rounded-lg bg-blue-500 flex items-center justify-center">
                 <FiSend className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-command-text">Telegram</h3>
-                <p className="text-xs text-command-text-muted">Canal Institucional</p>
+                <h3 className="text-lg font-bold text-neutral-900 dark:text-white">Telegram</h3>
+                <p className="text-xs text-neutral-900 dark:text-white-muted">Canal Institucional</p>
               </div>
             </div>
 
             <div className="space-y-4">
               <div>
-                <h4 className="text-sm font-semibold text-command-text mb-2">Publicação para Canal</h4>
-                <div className="bg-command-bg rounded-lg p-4 mb-3 border border-command-border">
-                  <p className="text-sm font-semibold text-command-text mb-2">
+                <h4 className="text-sm font-semibold text-neutral-900 dark:text-white mb-2">Publicação para Canal</h4>
+                <div className="bg-white dark:bg-neutral-900 rounded-lg p-4 mb-3 border border-neutral-200 dark:border-neutral-700">
+                  <p className="text-sm font-semibold text-neutral-900 dark:text-white mb-2">
                     {conteudoPorCanal.telegram.titulo}
                   </p>
-                  <p className="text-sm text-command-text-muted whitespace-pre-line">
+                  <p className="text-sm text-neutral-900 dark:text-white-muted whitespace-pre-line">
                     {conteudoPorCanal.telegram.mensagem}
                   </p>
                 </div>
@@ -219,8 +219,8 @@ function ComunicacaoIntegrada() {
         </div>
 
         {/* Nota sobre IA */}
-        <div className="mt-6 bg-command-surface rounded-xl p-6 border border-command-border">
-          <p className="text-sm text-command-text-muted">
+        <div className="mt-6 bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl rounded-xl p-6 border border-neutral-200 dark:border-neutral-700">
+          <p className="text-sm text-neutral-900 dark:text-white-muted">
             <strong>Nota:</strong> A IA sugere o melhor canal e horário de publicação, mas a publicação final é sempre validada por humano. 
             O app funciona como núcleo oficial e organizado, enquanto as redes sociais atuam como canais de distribuição.
           </p>

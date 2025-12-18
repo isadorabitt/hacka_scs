@@ -11,6 +11,7 @@ function withOpacity(variableName) {
 }
 
 export default {
+  darkMode: 'class', // Usar classe em vez de detecção automática do sistema
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",

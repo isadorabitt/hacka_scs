@@ -4,21 +4,25 @@ const ThemeContext = createContext()
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
-    // Recuperar tema salvo ou usar dark como padrão
+    // Recuperar tema salvo ou usar light como padrão
     const savedTheme = localStorage.getItem('scs-theme')
-    return savedTheme || 'dark'
+    // Garantir que sempre comece com 'light' se não houver tema salvo
+    return savedTheme === 'dark' ? 'dark' : 'light'
   })
 
   useEffect(() => {
+    // Garantir que o tema seja válido
+    const validTheme = theme === 'dark' ? 'dark' : 'light'
+    
     // Salvar tema no localStorage
-    localStorage.setItem('scs-theme', theme)
+    localStorage.setItem('scs-theme', validTheme)
     
     // Aplicar classe no documento
     const root = document.documentElement
-    root.setAttribute('data-theme', theme)
+    root.setAttribute('data-theme', validTheme)
     
     // Também atualizar a classe para compatibilidade com Tailwind
-    if (theme === 'dark') {
+    if (validTheme === 'dark') {
       root.classList.add('dark')
       root.classList.remove('light')
     } else {

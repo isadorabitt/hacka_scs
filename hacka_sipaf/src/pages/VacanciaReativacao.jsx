@@ -57,42 +57,42 @@ function VacanciaReativacao() {
   }
 
   return (
-    <div className="h-full flex flex-col bg-command-bg">
-      <div className="p-6 border-b border-command-border">
-        <h1 className="text-4xl font-bold text-command-text mb-2 flex items-center gap-3">
-          <FiHome className="text-command-accent" />
+    <div className="h-full flex flex-col bg-white dark:bg-neutral-900">
+      <div className="p-6 border-b border-neutral-200 dark:border-neutral-700">
+        <h1 className="text-4xl font-bold text-neutral-900 dark:text-white mb-2 flex items-center gap-3">
+          <FiHome className="text-orange-500" />
           Vacância e Reativação de Espaços
         </h1>
-        <p className="text-command-text-muted">
+        <p className="text-neutral-900 dark:text-white-muted">
           Reduzir imóveis ociosos e estimular ocupação temporária e permanente
         </p>
 
         {/* Estatísticas */}
         <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-command-surface rounded-xl p-4 border border-command-border">
-            <div className="text-2xl font-bold text-command-text">{imoveisVazios.length}</div>
-            <div className="text-sm text-command-text-muted">Imóveis Vazios</div>
+          <div className="bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl rounded-xl p-4 border border-neutral-200 dark:border-neutral-700">
+            <div className="text-2xl font-bold text-neutral-900 dark:text-white">{imoveisVazios.length}</div>
+            <div className="text-sm text-neutral-900 dark:text-white-muted">Imóveis Vazios</div>
           </div>
-          <div className="bg-command-surface rounded-xl p-4 border border-command-border">
-            <div className="text-2xl font-bold text-command-text">{espacosPublicos.length}</div>
-            <div className="text-sm text-command-text-muted">Espaços Públicos</div>
+          <div className="bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl rounded-xl p-4 border border-neutral-200 dark:border-neutral-700">
+            <div className="text-2xl font-bold text-neutral-900 dark:text-white">{espacosPublicos.length}</div>
+            <div className="text-sm text-neutral-900 dark:text-white-muted">Espaços Públicos</div>
           </div>
-          <div className="bg-command-surface rounded-xl p-4 border border-command-border">
-            <div className="text-2xl font-bold text-command-text">{eventosDisponiveis.length}</div>
-            <div className="text-sm text-command-text-muted">Eventos em SCS 5 e 6</div>
+          <div className="bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl rounded-xl p-4 border border-neutral-200 dark:border-neutral-700">
+            <div className="text-2xl font-bold text-neutral-900 dark:text-white">{eventosDisponiveis.length}</div>
+            <div className="text-sm text-neutral-900 dark:text-white-muted">Eventos em SCS 5 e 6</div>
           </div>
         </div>
 
         {/* Filtros */}
         <div className="mt-6 flex flex-wrap gap-4">
           <div className="flex-1 min-w-[200px]">
-            <label className="block text-sm font-medium text-command-text-muted mb-2">
+            <label className="block text-sm font-medium text-neutral-900 dark:text-white-muted mb-2">
               Tipo
             </label>
             <select
               value={filtroTipo}
               onChange={(e) => setFiltroTipo(e.target.value)}
-              className="w-full px-4 py-2 rounded-lg bg-command-surface border border-command-border text-command-text"
+              className="w-full px-4 py-2 rounded-lg bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl border border-neutral-200 dark:border-neutral-700 text-neutral-900 dark:text-white"
             >
               <option value="todos">Todos</option>
               <option value="vazio">Imóveis Vazios</option>
@@ -101,13 +101,13 @@ function VacanciaReativacao() {
           </div>
 
           <div className="flex-1 min-w-[200px]">
-            <label className="block text-sm font-medium text-command-text-muted mb-2">
+            <label className="block text-sm font-medium text-neutral-900 dark:text-white-muted mb-2">
               Quadra
             </label>
             <select
               value={filtroQuadra}
               onChange={(e) => setFiltroQuadra(e.target.value)}
-              className="w-full px-4 py-2 rounded-lg bg-command-surface border border-command-border text-command-text"
+              className="w-full px-4 py-2 rounded-lg bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl border border-neutral-200 dark:border-neutral-700 text-neutral-900 dark:text-white"
             >
               <option value="todas">Todas as Quadras</option>
               <option value="scs-1">SCS Quadra 1</option>
@@ -122,9 +122,9 @@ function VacanciaReativacao() {
       </div>
 
       {/* Mapa e Lista */}
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-6 p-6 overflow-hidden">
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-6 p-6 overflow-y-auto">
         {/* Mapa */}
-        <div className="bg-command-surface rounded-xl border border-command-border overflow-hidden">
+        <div className="bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl rounded-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
           <MapContainer
             center={[-15.7925, -47.8850]}
             zoom={14}
@@ -207,7 +207,7 @@ function VacanciaReativacao() {
             {itensFiltrados.map(item => (
               <div
                 key={item.id}
-                className="bg-command-surface rounded-xl overflow-hidden border border-command-border"
+                className="bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl rounded-xl overflow-hidden border border-neutral-200 dark:border-neutral-700"
               >
                 {/* Imagem do Item */}
                 {item.imagem && (
@@ -236,7 +236,7 @@ function VacanciaReativacao() {
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-3">
                     <div>
-                      <h3 className="text-xl font-bold text-command-text mb-1">{item.nome}</h3>
+                      <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-1">{item.nome}</h3>
                       {!item.imagem && (
                         <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${
                           item.status === 'vazio' 
@@ -250,17 +250,17 @@ function VacanciaReativacao() {
                   </div>
 
                 <div className="space-y-2 mb-4">
-                  <div className="flex items-center gap-2 text-sm text-command-text-muted">
-                    <FiMapPin className="text-command-accent" />
+                  <div className="flex items-center gap-2 text-sm text-neutral-900 dark:text-white-muted">
+                    <FiMapPin className="text-orange-500" />
                     <span>{item.endereco}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-command-text-muted">
-                    <FiHome className="text-command-accent" />
+                  <div className="flex items-center gap-2 text-sm text-neutral-900 dark:text-white-muted">
+                    <FiHome className="text-orange-500" />
                     <span>{getQuadraNome(item.quadra)}</span>
                   </div>
                 </div>
 
-                <p className="text-sm text-command-text-muted mb-4">{item.descricao}</p>
+                <p className="text-sm text-neutral-900 dark:text-white-muted mb-4">{item.descricao}</p>
 
                 {item.status === 'vazio' && (
                   <div className="p-3 rounded-lg bg-blue-500/10 border border-blue-500/30 mb-3">
@@ -288,7 +288,7 @@ function VacanciaReativacao() {
 
           {itensFiltrados.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-command-text-muted">Nenhum item encontrado com os filtros selecionados.</p>
+              <p className="text-neutral-900 dark:text-white-muted">Nenhum item encontrado com os filtros selecionados.</p>
             </div>
           )}
         </div>

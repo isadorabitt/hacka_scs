@@ -5,7 +5,7 @@ import { comerciosMock } from '../data/scs-comercios-mock'
 import { alertasMock } from '../data/scs-alertas-mock'
 
 const API_CONFIG = {
-  baseURL: process.env.VITE_API_URL || 'https://api.scsconecta.df.gov.br',
+  baseURL: import.meta.env.VITE_API_URL || 'https://api.scsconecta.df.gov.br',
   timeout: 10000,
 }
 
@@ -220,5 +220,81 @@ export const compartilharTelegram = async (evento) => {
   const mensagem = `${evento.titulo}\n\n${evento.descricao}\n\n📍 ${evento.quadra.replace('scs-', 'SCS Quadra ')}\n📅 ${new Date(evento.data).toLocaleDateString('pt-BR')}\n⏰ ${evento.horario}\n\n🔗 ${evento.qrCode}`
   const url = `https://t.me/share/url?url=${encodeURIComponent(evento.qrCode)}&text=${encodeURIComponent(mensagem)}`
   return { url, mensagem }
+}
+
+// ===== NOVOS SERVIÇOS DE IA =====
+
+const AI_SERVICE_URL = import.meta.env.VITE_AI_SERVICE_URL || 'http://localhost:8000'
+
+/**
+ * 🗺️ Mapa Vivo: O que está acontecendo AGORA no SCS
+ */
+export const agoraNoSCS = async (quadra = null, dadosReais = {}) => {
+  try {
+    const response = await axios.post(
+      `${AI_SERVICE_URL}/api/v1/mapa/agora`,
+      {
+        quadra: quadra || null,
+        timestamp: new Date().toISOString(),
+      },
+      {
+        params: dadosReais,
+      }
+    )
+    return response.data
+  } catch (error) {
+    console.error('Erro ao buscar status atual:', error)
+    // Se a API não estiver disponível, usar dados mock
+    throw error
+  }
+}
+
+/**
+ * 📊 Predição de Movimento
+ */
+export const preverMovimento = async (quadra, dataHora, eventosAgendados = []) => {
+  try {
+    const response = await axios.post(`${AI_SERVICE_URL}/api/v1/movimento/prever`, {
+      quadra,
+      dataHora,
+      eventosAgendados,
+    })
+    return response.data
+  } catch (error) {
+    console.warn('Erro ao prever movimento:', error)
+    return null
+  }
+}
+
+/**
+ * 🤖 IA Multi-Agente: Orquestração inteligente
+ */
+export const orquestrarAgentes = async (quadra, contexto = {}) => {
+  try {
+    const response = await axios.post(`${AI_SERVICE_URL}/api/v1/agentes/orquestrar`, {
+      quadra,
+      contexto,
+    })
+    return response.data
+  } catch (error) {
+    console.warn('Erro ao orquestrar agentes:', error)
+    return null
+  }
+}
+
+/**
+ * 🔮 Predição de Sucesso de Evento
+ */
+export const preverSucessoEvento = async (evento, historico = {}) => {
+  try {
+    const response = await axios.post(`${AI_SERVICE_URL}/api/v1/eventos/prever-sucesso`, {
+      evento,
+      historico,
+    })
+    return response.data
+  } catch (error) {
+    console.warn('Erro ao prever sucesso:', error)
+    return null
+  }
 }
 
