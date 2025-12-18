@@ -1,0 +1,172 @@
+/**
+ * Leaflet - Overrides para tema escuro/claro
+ * Usa variáveis CSS para suportar mudança de tema
+ */
+
+.leaflet-container {
+  background: var(--color-bg);
+  font-family: inherit;
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--color-surface) !important;
+  color: var(--color-text) !important;
+  border-radius: var(--radius-lg) !important;
+  border: 1px solid var(--color-border) !important;
+  box-shadow: var(--shadow-lg) !important;
+  padding: 0 !important;
+  overflow: hidden;
+  transition: background-color 300ms ease, border-color 300ms ease, color 300ms ease, box-shadow 300ms ease !important;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: var(--color-text) !important;
+  transition: color 300ms ease !important;
+  width: auto !important;
+}
+
+/* Garantir que todos os elementos dentro do popup usem cores do tema */
+.leaflet-popup-content * {
+  color: inherit;
+}
+
+.leaflet-popup-content .text-command-text {
+  color: var(--color-text) !important;
+}
+
+.leaflet-popup-content .text-command-text-muted {
+  color: var(--color-text-muted) !important;
+}
+
+.leaflet-popup-content .text-command-accent {
+  color: var(--color-accent) !important;
+}
+
+.leaflet-popup-tip {
+  background: var(--color-surface) !important;
+  border: 1px solid var(--color-border) !important;
+  transition: background-color 300ms ease, border-color 300ms ease !important;
+}
+
+.leaflet-popup-close-button {
+  color: var(--color-text-muted) !important;
+  opacity: 0.7 !important;
+  transition: color 300ms ease, opacity 300ms ease !important;
+}
+
+/* Popup de foco público */
+.popup-foco-publico {
+  min-width: 200px;
+  max-width: 280px;
+  padding: 0;
+}
+
+.popup-foco-publico h3 {
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+.popup-foco-publico p {
+  margin: 4px 0;
+  line-height: 1.5;
+}
+
+/* Tooltip customizado para quartéis */
+.custom-tooltip-quartel {
+  background: rgba(0, 0, 0, 0.85) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 6px 10px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  white-space: nowrap !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  pointer-events: none !important;
+}
+
+.custom-tooltip-quartel:before {
+  border-top-color: rgba(0, 0, 0, 0.85) !important;
+}
+
+.leaflet-popup-close-button:hover {
+  opacity: 1 !important;
+  color: var(--color-accent) !important;
+}
+
+/* Custom markers */
+.custom-marker-foco {
+  background: transparent !important;
+  border: none !important;
+}
+
+.custom-marker-quartel {
+  background: transparent !important;
+  border: none !important;
+}
+
+.vento-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Garantir que marcadores fire-marker fiquem fixos nas coordenadas */
+.leaflet-marker-icon.fire-marker,
+.leaflet-div-icon.fire-marker {
+  /* Leaflet usa transform para posicionar - não interferir */
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  /* Garantir que o container não tenha estilos que interfiram */
+  box-sizing: border-box !important;
+}
+
+/* Container interno do fire-marker */
+.fire-marker > div {
+  /* Centralizar o conteúdo dentro do container do Leaflet */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* A animação pulse não deve afetar o posicionamento */
+  animation: pulse 2s infinite;
+}
+
+/* Popup de foco público */
+.popup-foco-publico {
+  min-width: 200px;
+  max-width: 280px;
+  padding: 12px;
+}
+
+.popup-foco-publico h3 {
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+.popup-foco-publico p {
+  margin: 4px 0;
+  line-height: 1.5;
+}
+
+/* Tooltip customizado para quartéis */
+.custom-tooltip-quartel {
+  background: rgba(0, 0, 0, 0.85) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 6px 10px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  white-space: nowrap !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  pointer-events: none !important;
+}
+
+.custom-tooltip-quartel:before {
+  border-top-color: rgba(0, 0, 0, 0.85) !important;
+}
+

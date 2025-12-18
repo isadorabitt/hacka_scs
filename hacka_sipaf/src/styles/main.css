@@ -1,0 +1,97 @@
+/**
+ * Arquivo central de estilos - SCS Conecta
+ * 
+ * Este arquivo centraliza todos os imports de CSS do projeto.
+ * Estrutura MVC: base/ para fundação, components/ para componentes
+ * Suporte a temas: dark/light via data-theme attribute
+ * 
+ * IMPORTANTE: @import deve vir antes de @tailwind
+ */
+
+/* ========================================
+   BASE - Fundação do design system
+   ======================================== */
+
+/* Variáveis CSS (Design Tokens) */
+@import './base/variables.css';
+
+/* Tipografia */
+@import './base/typography.css';
+
+/* Reset e estilos globais */
+@import './base/reset.css';
+
+/* Animações */
+@import './base/animations.css';
+
+/* ========================================
+   COMPONENTS - Estilos de componentes
+   ======================================== */
+
+/* Leaflet overrides */
+@import './components/leaflet.css';
+
+/* Scrollbar customizada */
+@import './components/scrollbar.css';
+
+/* Skeleton loader */
+@import './components/skeleton.css';
+
+/* ========================================
+   TAILWIND
+   ======================================== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   TAILWIND COMPONENTS (V2)
+   ======================================== */
+
+@layer components {
+  .glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--color-border);
+    @apply backdrop-blur-md transition-colors duration-300;
+  }
+
+  .card {
+    background: var(--glass-bg);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    @apply backdrop-blur-md rounded-lg p-4 transition-colors duration-300;
+  }
+
+  .btn-primary {
+    background-color: var(--color-accent);
+    color: white;
+    @apply font-semibold py-2 px-4 rounded-lg transition-colors;
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--color-accent-hover);
+  }
+
+  .btn-secondary {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    @apply font-semibold py-2 px-4 rounded-lg transition-colors;
+  }
+  
+  .btn-secondary:hover {
+    background-color: var(--color-surface-alt);
+  }
+}
+
+/* Transições suaves para mudança de tema */
+html.transitioning,
+html.transitioning *,
+html.transitioning *::before,
+html.transitioning *::after {
+  transition: background-color 300ms ease, 
+              border-color 300ms ease, 
+              color 300ms ease,
+              fill 300ms ease,
+              box-shadow 300ms ease !important;
+}

@@ -1,0 +1,199 @@
+/**
+ * Variáveis CSS - Design Tokens
+ * Centraliza todas as variáveis de design do projeto
+ * 
+ * Sistema de Cores baseado em Teoria das Cores:
+ * - Dark Theme: Cores frias (azul escuro) com accent quente (laranja) - Alto contraste
+ * - Light Theme: Tons neutros quentes (bege/cream) com accent laranja - Harmonia análoga
+ * 
+ * Nota: Variáveis -rgb são usadas pelo Tailwind para suportar opacidade
+ */
+
+:root,
+[data-theme="dark"] {
+  /* ========================================
+     DARK THEME - Command Center
+     Baseado em cores frias com accent complementar quente
+     ======================================== */
+  
+  /* Cores Base (Command Center Theme) */
+  --color-bg: #0f172a;
+  --color-bg-rgb: 15, 23, 42;
+  --color-bg-alt: #0a0e27;
+  --color-bg-alt-rgb: 10, 14, 39;
+  --color-surface: #1e293b;
+  --color-surface-rgb: 30, 41, 59;
+  --color-surface-alt: #1a1f3a;
+  --color-surface-alt-rgb: 26, 31, 58;
+  --color-surface-dark: #0f1328;
+  --color-border: #334155;
+  --color-border-rgb: 51, 65, 85;
+  --color-border-alt: #2a2f4a;
+  
+  /* Cores de Texto */
+  --color-text: #e2e8f0;
+  --color-text-rgb: 226, 232, 240;
+  --color-text-alt: #e8e8e8;
+  --color-text-muted: #94a3b8;
+  --color-text-muted-rgb: 148, 163, 184;
+  --color-text-muted-alt: #a0a0b0;
+  --color-text-disabled: #6a6a7a;
+  
+  /* Cores de Destaque - Laranja (Complementar ao azul) */
+  --color-accent: #f97316;
+  --color-accent-rgb: 249, 115, 22;
+  --color-accent-hover: #ea580c;
+  --color-accent-hover-rgb: 234, 88, 12;
+  --color-accent-light: rgba(249, 115, 22, 0.2);
+  
+  /* Cores de Status */
+  --color-success: #22c55e;
+  --color-success-rgb: 34, 197, 94;
+  --color-success-light: rgba(34, 197, 94, 0.2);
+  --color-warning: #eab308;
+  --color-warning-rgb: 234, 179, 8;
+  --color-warning-light: rgba(234, 179, 8, 0.2);
+  --color-danger: #ef4444;
+  --color-danger-rgb: 239, 68, 68;
+  --color-danger-light: rgba(239, 68, 68, 0.2);
+  --color-info: #3b82f6;
+  --color-info-rgb: 59, 130, 246;
+  --color-info-light: rgba(59, 130, 246, 0.2);
+  
+  /* Cores de Intensidade (Focos) */
+  --color-intensity-low: #ffaa00;
+  --color-intensity-medium: #ff6600;
+  --color-intensity-high: #ff0000;
+  
+  /* Específicas do tema */
+  --header-bg: rgba(15, 23, 42, 0.95);
+  --glass-bg: rgba(30, 41, 59, 0.8);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="light"] {
+  /* ========================================
+     LIGHT THEME - Daylight Operations
+     Baseado em tons neutros quentes com accent análogo
+     Paleta inspirada em mapas topográficos e ambientes naturais
+     ======================================== */
+  
+  /* Cores Base - Tons neutros quentes (cream/sand) */
+  --color-bg: #f8f6f1;
+  --color-bg-rgb: 248, 246, 241;
+  --color-bg-alt: #f0ede5;
+  --color-bg-alt-rgb: 240, 237, 229;
+  --color-surface: #ffffff;
+  --color-surface-rgb: 255, 255, 255;
+  --color-surface-alt: #faf9f7;
+  --color-surface-alt-rgb: 250, 249, 247;
+  --color-surface-dark: #e8e5dd;
+  --color-border: #d4d0c8;
+  --color-border-rgb: 212, 208, 200;
+  --color-border-alt: #c9c4b8;
+  
+  /* Cores de Texto - Tons escuros com subtom quente */
+  --color-text: #1c1917;
+  --color-text-rgb: 28, 25, 23;
+  --color-text-alt: #292524;
+  --color-text-muted: #57534e;
+  --color-text-muted-rgb: 87, 83, 78;
+  --color-text-muted-alt: #78716c;
+  --color-text-disabled: #a8a29e;
+  
+  /* Cores de Destaque - Laranja mais saturado para contraste */
+  --color-accent: #ea580c;
+  --color-accent-rgb: 234, 88, 12;
+  --color-accent-hover: #c2410c;
+  --color-accent-hover-rgb: 194, 65, 12;
+  --color-accent-light: rgba(234, 88, 12, 0.15);
+  
+  /* Cores de Status - Ajustadas para melhor contraste em fundo claro */
+  --color-success: #16a34a;
+  --color-success-rgb: 22, 163, 74;
+  --color-success-light: rgba(22, 163, 74, 0.15);
+  --color-warning: #ca8a04;
+  --color-warning-rgb: 202, 138, 4;
+  --color-warning-light: rgba(202, 138, 4, 0.15);
+  --color-danger: #dc2626;
+  --color-danger-rgb: 220, 38, 38;
+  --color-danger-light: rgba(220, 38, 38, 0.15);
+  --color-info: #2563eb;
+  --color-info-rgb: 37, 99, 235;
+  --color-info-light: rgba(37, 99, 235, 0.15);
+  
+  /* Cores de Intensidade (Focos) - Mantidas para consistência no mapa */
+  --color-intensity-low: #f59e0b;
+  --color-intensity-medium: #ea580c;
+  --color-intensity-high: #dc2626;
+  
+  /* Específicas do tema */
+  --header-bg: rgba(255, 255, 255, 0.95);
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --shadow-color: rgba(0, 0, 0, 0.08);
+}
+
+/* ========================================
+   VARIÁVEIS COMPARTILHADAS (ambos temas)
+   ======================================== */
+
+:root {
+  /* ========================================
+     ESPAÇAMENTOS
+     ======================================== */
+  
+  --spacing-xs: 0.25rem;   /* 4px */
+  --spacing-sm: 0.5rem;    /* 8px */
+  --spacing-md: 1rem;      /* 16px */
+  --spacing-lg: 1.5rem;    /* 24px */
+  --spacing-xl: 2rem;      /* 32px */
+  --spacing-2xl: 3rem;     /* 48px */
+  
+  /* ========================================
+     BORDER RADIUS
+     ======================================== */
+  
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 9999px;
+  
+  /* ========================================
+     SHADOWS
+     ======================================== */
+  
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 2px 10px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-accent: 0 0 10px var(--color-accent);
+  
+  /* ========================================
+     TRANSITIONS
+     ======================================== */
+  
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
+  
+  /* ========================================
+     Z-INDEX
+     ======================================== */
+  
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-sticky: 500;
+  --z-fixed: 1000;
+  --z-modal: 1100;
+  --z-tooltip: 1200;
+  --z-max: 9999;
+  
+  /* ========================================
+     SIZES
+     ======================================== */
+  
+  --sidebar-width: 350px;
+  --sidebar-collapsed: 80px;
+  --header-height: 60px;
+  --panel-max-height: 600px;
+}

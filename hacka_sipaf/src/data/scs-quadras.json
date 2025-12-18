@@ -1,0 +1,132 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "scs-1",
+        "nome": "SCS Quadra 1",
+        "descricao": "Maior concentração de bares, restaurantes e eventos noturnos",
+        "caracteristicas": ["Alto fluxo noturno", "Bares e restaurantes", "Eventos noturnos", "Sensação de insegurança"],
+        "tipo": "quadra",
+        "cor": "#FF6B6B"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-47.9000, -15.7900],
+          [-47.8950, -15.7900],
+          [-47.8950, -15.7950],
+          [-47.9000, -15.7950],
+          [-47.9000, -15.7900]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "scs-2",
+        "nome": "SCS Quadra 2",
+        "descricao": "Alto fluxo noturno com bares e restaurantes",
+        "caracteristicas": ["Alto fluxo noturno", "Bares e restaurantes", "Eventos noturnos", "Sensação de insegurança"],
+        "tipo": "quadra",
+        "cor": "#FF6B6B"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-47.8950, -15.7900],
+          [-47.8900, -15.7900],
+          [-47.8900, -15.7950],
+          [-47.8950, -15.7950],
+          [-47.8950, -15.7900]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "scs-3",
+        "nome": "SCS Quadra 3",
+        "descricao": "Forte presença de serviços, escritórios e imóveis ociosos",
+        "caracteristicas": ["Serviços e escritórios", "Esvaziamento após horário comercial", "Imóveis ociosos"],
+        "tipo": "quadra",
+        "cor": "#4ECDC4"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-47.8900, -15.7900],
+          [-47.8850, -15.7900],
+          [-47.8850, -15.7950],
+          [-47.8900, -15.7950],
+          [-47.8900, -15.7900]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "scs-4",
+        "nome": "SCS Quadra 4",
+        "descricao": "Forte presença de serviços, escritórios e imóveis ociosos",
+        "caracteristicas": ["Serviços e escritórios", "Esvaziamento após horário comercial", "Imóveis ociosos"],
+        "tipo": "quadra",
+        "cor": "#4ECDC4"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-47.8850, -15.7900],
+          [-47.8800, -15.7900],
+          [-47.8800, -15.7950],
+          [-47.8850, -15.7950],
+          [-47.8850, -15.7900]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "scs-5",
+        "nome": "SCS Quadra 5",
+        "descricao": "Equipamentos públicos, galerias e espaços culturais subutilizados",
+        "caracteristicas": ["Equipamentos públicos", "Galerias", "Espaços culturais", "Comércio informal"],
+        "tipo": "quadra",
+        "cor": "#95E1D3"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-47.8800, -15.7900],
+          [-47.8750, -15.7900],
+          [-47.8750, -15.7950],
+          [-47.8800, -15.7950],
+          [-47.8800, -15.7900]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "scs-6",
+        "nome": "SCS Quadra 6",
+        "descricao": "Equipamentos públicos, galerias e espaços culturais subutilizados",
+        "caracteristicas": ["Equipamentos públicos", "Galerias", "Espaços culturais", "Comércio informal"],
+        "tipo": "quadra",
+        "cor": "#95E1D3"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-47.8750, -15.7900],
+          [-47.8700, -15.7900],
+          [-47.8700, -15.7950],
+          [-47.8750, -15.7950],
+          [-47.8750, -15.7900]
+        ]]
+      }
+    }
+  ]
+}
+

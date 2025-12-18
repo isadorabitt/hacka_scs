@@ -1,0 +1,188 @@
+/**
+ * Animações globais reutilizáveis
+ */
+
+/* ========================================
+   KEYFRAMES
+   ======================================== */
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 102, 0, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 102, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 102, 0, 0);
+  }
+}
+
+@keyframes fire-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================
+   CLASSES DE ANIMAÇÃO
+   ======================================== */
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+.animate-fire-pulse {
+  animation: fire-pulse 2s ease-in-out infinite;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.3s ease;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Fire marker - Container do Leaflet */
+.fire-marker {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  /* Leaflet controla o posicionamento via transform - não interferir */
+  position: absolute !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  /* Não aplicar transformações customizadas - deixar o Leaflet controlar */
+}
+
+/* Div interno do marcador */
+.fire-marker > div {
+  /* Usar position absolute relativo ao container do Leaflet */
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  /* Centralizar usando transform - isso não interfere com o posicionamento do Leaflet */
+  transform: translate(-50%, -50%) !important;
+  display: block;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Animação de brilho pulsante */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
+  }
+  50% {
+    box-shadow: 0 0 30px currentColor, 0 0 60px currentColor;
+  }
+}
+
+/* Animação de shimmer (brilho deslizante) */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Animação de fade in com scale */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animação de pulso para alertas */
+@keyframes pulse-alert {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px currentColor;
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 30px currentColor, 0 0 50px currentColor;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+.animate-fadeInScale {
+  animation: fadeInScale 0.5s ease-out;
+}
+
+.animate-pulse-alert {
+  animation: pulse-alert 1.5s ease-in-out infinite;
+}
+

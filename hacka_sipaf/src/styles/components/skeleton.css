@@ -1,0 +1,16 @@
+/**
+ * Skeleton Loader - Componente de carregamento
+ */
+
+.skeleton-loader {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-dark) 0%,
+    var(--color-surface-alt) 50%,
+    var(--color-surface-dark) 100%
+  );
+  background-size: 200% 100%;
+  animation: loading 1.5s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
