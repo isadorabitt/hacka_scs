@@ -133,6 +133,7 @@ function VacanciaReativacao() {
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              className="leaflet-tile-pane"
             />
             
             {/* Quadras */}
@@ -148,9 +149,9 @@ function VacanciaReativacao() {
                 }}
               >
                 <Popup>
-                  <div>
-                    <h3 className="font-bold">{quadra.properties.nome}</h3>
-                    <p className="text-sm text-gray-600">{quadra.properties.descricao}</p>
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-bold text-neutral-900 dark:text-white">{quadra.properties.nome}</h3>
+                    <p className="text-sm text-neutral-600 dark:text-neutral-400">{quadra.properties.descricao}</p>
                   </div>
                 </Popup>
               </Polygon>
@@ -168,12 +169,22 @@ function VacanciaReativacao() {
                 })}
               >
                 <Popup>
-                  <div>
-                    <h3 className="font-bold">{item.nome}</h3>
-                    <p className="text-sm text-gray-600">Disponível para locação</p>
+                  <div className="space-y-2">
+                    <div className="flex items-start justify-between gap-2">
+                      <h3 className="text-lg font-bold text-neutral-900 dark:text-white flex-1">{item.nome}</h3>
+                      <span className="px-2 py-1 rounded-full text-xs font-semibold bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">
+                        Vazia
+                      </span>
+                    </div>
+                    <div className="space-y-1">
+                      <p className="text-sm text-neutral-600 dark:text-neutral-400">Disponível para locação</p>
                     {item.tempoVazio && (
-                      <p className="text-xs text-gray-500 mt-1">Vazio há {item.tempoVazio}</p>
+                        <p className="text-xs text-neutral-500 dark:text-neutral-500">Vazio há {item.tempoVazio}</p>
                     )}
+                      <p className="text-xs font-medium text-orange-600 dark:text-orange-400 mt-2">
+                        - SCS {item.quadra?.replace('scs-', '') || 'N/A'}
+                      </p>
+                    </div>
                   </div>
                 </Popup>
               </Marker>
@@ -191,9 +202,17 @@ function VacanciaReativacao() {
                 })}
               >
                 <Popup>
-                  <div>
-                    <h3 className="font-bold">{item.nome}</h3>
-                    <p className="text-sm text-gray-600">Espaço público disponível para eventos</p>
+                  <div className="space-y-2">
+                    <div className="flex items-start justify-between gap-2">
+                      <h3 className="text-lg font-bold text-neutral-900 dark:text-white flex-1">{item.nome}</h3>
+                      <span className="px-2 py-1 rounded-full text-xs font-semibold bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300">
+                        Público
+                      </span>
+                    </div>
+                    <p className="text-sm text-neutral-600 dark:text-neutral-400">Espaço público disponível para eventos</p>
+                    <p className="text-xs font-medium text-orange-600 dark:text-orange-400 mt-2">
+                      - SCS {item.quadra?.replace('scs-', '') || 'N/A'}
+                    </p>
                   </div>
                 </Popup>
               </Marker>

@@ -139,9 +139,9 @@ function ComerciosAtivos() {
                 }}
               >
                 <Popup>
-                  <div>
-                    <h3 className="font-bold">{quadra.properties.nome}</h3>
-                    <p className="text-sm text-gray-600">{quadra.properties.descricao}</p>
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-bold text-neutral-900 dark:text-white">{quadra.properties.nome}</h3>
+                    <p className="text-sm text-neutral-600 dark:text-neutral-400">{quadra.properties.descricao}</p>
                   </div>
                 </Popup>
               </Polygon>
@@ -154,12 +154,12 @@ function ComerciosAtivos() {
                 position={[comercio.coordenadas[1], comercio.coordenadas[0]]}
               >
                 <Popup>
-                  <div>
-                    <h3 className="font-bold">{comercio.nome}</h3>
-                    <p className="text-sm text-gray-600">{getTipoNome(comercio.tipo)}</p>
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-bold text-neutral-900 dark:text-white">{comercio.nome}</h3>
+                    <p className="text-sm text-neutral-600 dark:text-neutral-400">{getTipoNome(comercio.tipo)}</p>
                     {comercio.abertoNoite && (
-                      <span className="inline-block mt-2 px-2 py-1 rounded bg-amber-500/20 text-amber-500 text-xs font-semibold">
-                        <FiMoon className="inline mr-1" />
+                      <span className="inline-flex items-center gap-1 mt-2 px-2 py-1 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 text-xs font-semibold">
+                        <FiMoon className="w-3 h-3" />
                         Aberto à noite
                       </span>
                     )}

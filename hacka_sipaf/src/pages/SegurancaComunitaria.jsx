@@ -165,13 +165,21 @@ function SegurancaComunitaria() {
                   }}
                 >
                   <Popup>
-                    <div>
-                      <h3 className="font-bold">{quadra.properties.nome}</h3>
-                      <p className="text-sm">
-                        Risco: {(riscoValue * 100).toFixed(0)}%
-                      </p>
+                    <div className="space-y-2">
+                      <h3 className="text-lg font-bold text-neutral-900 dark:text-white">{quadra.properties.nome}</h3>
+                      <div className="flex items-center gap-2">
+                        <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                          riscoValue > 0.6 
+                            ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300'
+                            : riscoValue > 0.3
+                            ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300'
+                            : 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300'
+                        }`}>
+                          Risco: {(riscoValue * 100).toFixed(0)}%
+                        </span>
+                      </div>
                       {risco?.eventosAtivos > 0 && (
-                        <p className="text-xs text-gray-600">
+                        <p className="text-xs text-neutral-600 dark:text-neutral-400">
                           {risco.eventosAtivos} evento(s) ativo(s)
                         </p>
                       )}
@@ -193,10 +201,15 @@ function SegurancaComunitaria() {
                 })}
               >
                 <Popup>
-                  <div>
-                    <h3 className="font-bold">{getTipoNome(alerta.tipo)}</h3>
-                    <p className="text-sm">{alerta.descricao}</p>
-                    <p className="text-xs text-gray-600 mt-1">
+                  <div className="space-y-2">
+                    <div className="flex items-start justify-between gap-2">
+                      <h3 className="text-lg font-bold text-neutral-900 dark:text-white flex-1">{getTipoNome(alerta.tipo)}</h3>
+                      <span className="px-2 py-1 rounded-full text-xs font-semibold bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300">
+                        {getStatusNome(alerta.status)}
+                      </span>
+                    </div>
+                    <p className="text-sm text-neutral-600 dark:text-neutral-400">{alerta.descricao}</p>
+                    <p className="text-xs text-neutral-500 dark:text-neutral-500">
                       {new Date(alerta.data).toLocaleString('pt-BR')}
                     </p>
                   </div>
