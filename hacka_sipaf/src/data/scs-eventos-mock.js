@@ -10,6 +10,7 @@ export const eventosMock = [
     horarioFim: '02:00',
     tipo: 'cultural',
     publico: 'jovens',
+    publicoAlvo: ['lgbt', 'feminino'], // Evento inclusivo para comunidade LGBT+ e público feminino
     impactoEsperado: 'alto',
     nivelDestaque: 'alto',
     necessidadeApoio: ['seguranca', 'iluminacao'],
@@ -34,6 +35,7 @@ export const eventosMock = [
     horarioFim: '20:00',
     tipo: 'cultural',
     publico: 'todas-idades',
+    publicoAlvo: ['idoso', 'acessivel', 'feminino'], // Evento acessível e inclusivo
     impactoEsperado: 'medio',
     nivelDestaque: 'medio',
     necessidadeApoio: [],
@@ -58,6 +60,7 @@ export const eventosMock = [
     horarioFim: '23:00',
     tipo: 'comercial',
     publico: 'adultos',
+    publicoAlvo: [], // Evento geral
     impactoEsperado: 'alto',
     nivelDestaque: 'alto',
     necessidadeApoio: ['seguranca'],
@@ -82,6 +85,7 @@ export const eventosMock = [
     horarioFim: '18:00',
     tipo: 'cultural',
     publico: 'todas-idades',
+    publicoAlvo: ['idoso', 'acessivel'], // Evento acessível para idosos
     impactoEsperado: 'baixo',
     nivelDestaque: 'baixo',
     necessidadeApoio: [],
@@ -106,6 +110,7 @@ export const eventosMock = [
     horarioFim: '23:00',
     tipo: 'gastronomico',
     publico: 'todas-idades',
+    publicoAlvo: ['acessivel', 'idoso'], // Evento acessível
     impactoEsperado: 'alto',
     nivelDestaque: 'alto',
     necessidadeApoio: ['seguranca'],
@@ -130,6 +135,7 @@ export const eventosMock = [
     horarioFim: '20:00',
     tipo: 'cultural',
     publico: 'todas-idades',
+    publicoAlvo: ['lgbt', 'feminino', 'acessivel'], // Evento inclusivo
     impactoEsperado: 'medio',
     nivelDestaque: 'alto',
     necessidadeApoio: [],
@@ -154,6 +160,7 @@ export const eventosMock = [
     horarioFim: '02:00',
     tipo: 'show',
     publico: 'jovens',
+    publicoAlvo: [], // Evento geral
     impactoEsperado: 'alto',
     nivelDestaque: 'medio',
     necessidadeApoio: ['seguranca', 'iluminacao'],
@@ -178,6 +185,7 @@ export const eventosMock = [
     horarioFim: '17:00',
     tipo: 'feira',
     publico: 'todas-idades',
+    publicoAlvo: ['feminino', 'idoso', 'acessivel'], // Evento inclusivo
     impactoEsperado: 'medio',
     nivelDestaque: 'medio',
     necessidadeApoio: [],
@@ -190,6 +198,156 @@ export const eventosMock = [
       visualizacoes: 1200,
       qrScans: 280,
       confirmacoes: 150
+    }
+  },
+  {
+    id: 'evt-009',
+    titulo: 'Encontro de Mulheres Empreendedoras - SCS 3',
+    descricao: 'Rede de networking e palestras para mulheres empreendedoras do SCS.',
+    quadra: 'scs-3',
+    data: new Date(Date.now() + 5 * 86400000).toISOString().split('T')[0], // Em 5 dias
+    horario: '14:00',
+    horarioFim: '18:00',
+    tipo: 'cultural',
+    publico: 'adultos',
+    publicoAlvo: ['feminino'], // Evento exclusivo para mulheres
+    impactoEsperado: 'alto',
+    nivelDestaque: 'alto',
+    necessidadeApoio: [],
+    riscoOperacional: 'baixo',
+    qrCode: 'https://scsconecta.df.gov.br/evento/evt-009',
+    status: 'aprovado',
+    criadoPor: 'comunidade',
+    imagem: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80',
+    engajamento: {
+      visualizacoes: 2100,
+      qrScans: 520,
+      confirmacoes: 280
+    }
+  },
+  {
+    id: 'evt-010',
+    titulo: 'Pride SCS - Festa da Diversidade',
+    descricao: 'Celebração da diversidade com música, arte e cultura LGBTQIA+ no SCS.',
+    quadra: 'scs-2',
+    data: new Date(Date.now() + 7 * 86400000).toISOString().split('T')[0], // Em 7 dias
+    horario: '16:00',
+    horarioFim: '23:00',
+    tipo: 'show',
+    publico: 'todas-idades',
+    publicoAlvo: ['lgbt', 'feminino', 'acessivel'], // Evento inclusivo LGBTQIA+
+    impactoEsperado: 'alto',
+    nivelDestaque: 'alto',
+    necessidadeApoio: ['seguranca'],
+    riscoOperacional: 'medio',
+    qrCode: 'https://scsconecta.df.gov.br/evento/evt-010',
+    status: 'aprovado',
+    criadoPor: 'comunidade',
+    imagem: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80',
+    engajamento: {
+      visualizacoes: 3500,
+      qrScans: 980,
+      confirmacoes: 520
+    }
+  },
+  {
+    id: 'evt-011',
+    titulo: 'Café da Manhã para Idosos - SCS 4',
+    descricao: 'Encontro matinal com atividades recreativas e café da manhã especial.',
+    quadra: 'scs-4',
+    data: new Date(Date.now() + 4 * 86400000).toISOString().split('T')[0], // Em 4 dias
+    horario: '08:00',
+    horarioFim: '11:00',
+    tipo: 'cultural',
+    publico: 'idosos',
+    publicoAlvo: ['idoso', 'acessivel'], // Evento para idosos
+    impactoEsperado: 'medio',
+    nivelDestaque: 'medio',
+    necessidadeApoio: [],
+    riscoOperacional: 'baixo',
+    qrCode: 'https://scsconecta.df.gov.br/evento/evt-011',
+    status: 'aprovado',
+    criadoPor: 'prefeitura',
+    imagem: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80',
+    engajamento: {
+      visualizacoes: 680,
+      qrScans: 150,
+      confirmacoes: 95
+    }
+  },
+  {
+    id: 'evt-012',
+    titulo: 'Festival Infantil - SCS 5',
+    descricao: 'Dia de brincadeiras, contação de histórias e atividades para crianças.',
+    quadra: 'scs-5',
+    data: new Date(Date.now() + 6 * 86400000).toISOString().split('T')[0], // Em 6 dias
+    horario: '09:00',
+    horarioFim: '17:00',
+    tipo: 'cultural',
+    publico: 'criancas',
+    publicoAlvo: ['infantil', 'acessivel'], // Evento para crianças
+    impactoEsperado: 'alto',
+    nivelDestaque: 'alto',
+    necessidadeApoio: ['seguranca'],
+    riscoOperacional: 'baixo',
+    qrCode: 'https://scsconecta.df.gov.br/evento/evt-012',
+    status: 'aprovado',
+    criadoPor: 'prefeitura',
+    imagem: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80',
+    engajamento: {
+      visualizacoes: 2400,
+      qrScans: 650,
+      confirmacoes: 380
+    }
+  },
+  {
+    id: 'evt-013',
+    titulo: 'Teatro de Fantoches - SCS 6',
+    descricao: 'Apresentação de teatro de fantoches com histórias educativas para crianças.',
+    quadra: 'scs-6',
+    data: new Date(Date.now() + 8 * 86400000).toISOString().split('T')[0], // Em 8 dias
+    horario: '15:00',
+    horarioFim: '17:00',
+    tipo: 'cultural',
+    publico: 'criancas',
+    publicoAlvo: ['infantil', 'acessivel'], // Evento para crianças
+    impactoEsperado: 'medio',
+    nivelDestaque: 'medio',
+    necessidadeApoio: [],
+    riscoOperacional: 'baixo',
+    qrCode: 'https://scsconecta.df.gov.br/evento/evt-013',
+    status: 'aprovado',
+    criadoPor: 'comunidade',
+    imagem: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80',
+    engajamento: {
+      visualizacoes: 1200,
+      qrScans: 320,
+      confirmacoes: 180
+    }
+  },
+  {
+    id: 'evt-014',
+    titulo: 'Feira de Troca de Brinquedos - SCS 3',
+    descricao: 'Evento sustentável onde crianças podem trocar brinquedos e aprender sobre consumo consciente.',
+    quadra: 'scs-3',
+    data: new Date(Date.now() + 10 * 86400000).toISOString().split('T')[0], // Em 10 dias
+    horario: '10:00',
+    horarioFim: '14:00',
+    tipo: 'feira',
+    publico: 'criancas',
+    publicoAlvo: ['infantil', 'feminino', 'acessivel'], // Evento inclusivo para crianças
+    impactoEsperado: 'medio',
+    nivelDestaque: 'medio',
+    necessidadeApoio: [],
+    riscoOperacional: 'baixo',
+    qrCode: 'https://scsconecta.df.gov.br/evento/evt-014',
+    status: 'aprovado',
+    criadoPor: 'comunidade',
+    imagem: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80',
+    engajamento: {
+      visualizacoes: 1800,
+      qrScans: 450,
+      confirmacoes: 250
     }
   }
 ]

@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import { FiCalendar, FiMapPin, FiClock, FiUsers, FiShare2, FiMaximize2 } from 'react-icons/fi'
+import { FiCalendar, FiMapPin, FiClock, FiUsers, FiShare2, FiMaximize2, FiHeart, FiUsers as FiUsersIcon, FiUser, FiCheckCircle, FiSmile } from 'react-icons/fi'
 import { eventosMock } from '../data/scs-eventos-mock'
 import { toast } from 'react-hot-toast'
 import PageHeader from '../components/ui/PageHeader'
@@ -10,8 +10,56 @@ import Button from '../components/ui/Button'
 function AgendaEventos() {
   const [filtroQuadra, setFiltroQuadra] = useState('todas')
   const [filtroTipo, setFiltroTipo] = useState('todos')
+  const [filtrosPublicoAlvo, setFiltrosPublicoAlvo] = useState([]) // Array para múltipla seleção
   const [selectedEvento, setSelectedEvento] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  // Configuração dos filtros inclusivos
+  const filtrosInclusivos = [
+    {
+      id: 'feminino',
+      label: 'Público Feminino',
+      icon: FiUser,
+      cor: 'from-pink-500 to-rose-600',
+      descricao: 'Eventos voltados para mulheres'
+    },
+    {
+      id: 'lgbt',
+      label: 'LGBTQIA+',
+      icon: FiHeart,
+      cor: 'from-purple-500 to-pink-600',
+      descricao: 'Eventos inclusivos para comunidade LGBTQIA+'
+    },
+    {
+      id: 'idoso',
+      label: 'Idosos',
+      icon: FiUsersIcon,
+      cor: 'from-blue-500 to-cyan-600',
+      descricao: 'Eventos acessíveis para idosos'
+    },
+    {
+      id: 'infantil',
+      label: 'Infantil',
+      icon: FiSmile,
+      cor: 'from-yellow-500 to-orange-600',
+      descricao: 'Eventos para crianças e famílias'
+    },
+    {
+      id: 'acessivel',
+      label: 'Acessível',
+      icon: FiCheckCircle,
+      cor: 'from-teal-500 to-green-600',
+      descricao: 'Eventos com acessibilidade garantida'
+    }
+  ]
+
+  const toggleFiltroPublicoAlvo = (filtroId) => {
+    setFiltrosPublicoAlvo(prev => 
+      prev.includes(filtroId) 
+        ? prev.filter(id => id !== filtroId)
+        : [...prev, filtroId]
+    )
+  }
 
   // Separar eventos em "Acontecendo Agora" (3 eventos) e "Próximos" (6 eventos)
   const eventosAcontecendoAgora = useMemo(() => {
@@ -34,6 +82,11 @@ function AgendaEventos() {
     const filtrados = eventosMock.filter(evento => {
       const matchQuadra = filtroQuadra === 'todas' || evento.quadra === filtroQuadra
       const matchTipo = filtroTipo === 'todos' || evento.tipo === filtroTipo
+      
+      // Filtro de público-alvo: evento deve ter pelo menos um dos públicos selecionados
+      const matchPublicoAlvo = filtrosPublicoAlvo.length === 0 || 
+        (evento.publicoAlvo && evento.publicoAlvo.some(publico => filtrosPublicoAlvo.includes(publico)))
+      
       const dataEvento = new Date(evento.data)
       const hoje = new Date()
       hoje.setHours(0, 0, 0, 0)
@@ -43,11 +96,22 @@ function AgendaEventos() {
       // Eventos futuros ou que não estão em "Acontecendo Agora"
       const isFuturo = dataEventoLimpa > hoje || !eventosAcontecendoAgora.find(e => e.id === evento.id)
       
-      return matchQuadra && matchTipo && isFuturo
+      return matchQuadra && matchTipo && matchPublicoAlvo && isFuturo
     })
     
     return filtrados.slice(0, 6) // Limitar a 6 eventos
-  }, [filtroQuadra, filtroTipo, eventosAcontecendoAgora])
+  }, [filtroQuadra, filtroTipo, filtrosPublicoAlvo, eventosAcontecendoAgora])
+
+  // Contar eventos por público-alvo
+  const contadoresPublicoAlvo = useMemo(() => {
+    const contadores = {}
+    filtrosInclusivos.forEach(filtro => {
+      contadores[filtro.id] = eventosMock.filter(e => 
+        e.publicoAlvo && e.publicoAlvo.includes(filtro.id)
+      ).length
+    })
+    return contadores
+  }, [])
 
   const getQuadraNumero = (quadraId) => {
     const quadras = {
@@ -93,6 +157,22 @@ function AgendaEventos() {
       'feira': 'FEIRA',
     }
     return labels[tipo] || tipo.toUpperCase()
+  }
+
+  const getPublicoAlvoBadge = (publicoId) => {
+    const filtro = filtrosInclusivos.find(f => f.id === publicoId)
+    if (!filtro) return null
+    const Icon = filtro.icon
+    return (
+      <span
+        key={publicoId}
+        className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r ${filtro.cor} shadow-sm`}
+        title={filtro.descricao}
+      >
+        <Icon className="w-3 h-3" />
+        {filtro.label}
+      </span>
+    )
   }
 
   const formatarData = (data) => {
@@ -152,6 +232,92 @@ function AgendaEventos() {
             subtitle="Ative o território do SCS, quadra por quadra, usando eventos como ferramenta de ocupação urbana segura"
           />
 
+          {/* Seção: Filtros Inclusivos */}
+          <div className="mb-8 bg-command-surface rounded-2xl p-6 border border-command-border shadow-lg">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                <FiHeart className="w-5 h-5 text-white" />
+              </div>
+              <div>
+                <h3 className="text-xl font-black text-command-text">Eventos Inclusivos</h3>
+                <p className="text-sm text-command-text-muted">Encontre eventos pensados para você</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+              {filtrosInclusivos.map(filtro => {
+                const Icon = filtro.icon
+                const isActive = filtrosPublicoAlvo.includes(filtro.id)
+                const count = contadoresPublicoAlvo[filtro.id] || 0
+
+                return (
+                  <button
+                    key={filtro.id}
+                    onClick={() => toggleFiltroPublicoAlvo(filtro.id)}
+                    className={`relative p-4 rounded-xl border-2 transition-all duration-300 ${
+                      isActive
+                        ? `bg-gradient-to-br ${filtro.cor} border-transparent text-white shadow-lg transform scale-105`
+                        : 'bg-command-surface-alt border-command-border text-command-text hover:border-command-accent hover:shadow-md'
+                    }`}
+                  >
+                    <div className="flex items-start justify-between mb-2">
+                      <Icon className={`w-6 h-6 ${isActive ? 'text-white' : 'text-command-accent'}`} />
+                      {count > 0 && (
+                        <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${
+                          isActive 
+                            ? 'bg-white/20 text-white' 
+                            : 'bg-command-accent/20 text-command-accent'
+                        }`}>
+                          {count}
+                        </span>
+                      )}
+                    </div>
+                    <div className="text-left">
+                      <div className={`font-bold text-sm mb-1 ${isActive ? 'text-white' : 'text-command-text'}`}>
+                        {filtro.label}
+                      </div>
+                      <div className={`text-xs ${isActive ? 'text-white/80' : 'text-command-text-muted'}`}>
+                        {filtro.descricao}
+                      </div>
+                    </div>
+                    {isActive && (
+                      <div className="absolute top-2 right-2">
+                        <div className="w-2 h-2 bg-white rounded-full" />
+                      </div>
+                    )}
+                  </button>
+                )
+              })}
+            </div>
+
+            {filtrosPublicoAlvo.length > 0 && (
+              <div className="mt-4 pt-4 border-t border-command-border flex items-center justify-between">
+                <div className="flex items-center gap-2 text-sm text-command-text-muted">
+                  <span>Filtros ativos:</span>
+                  <div className="flex flex-wrap gap-2">
+                    {filtrosPublicoAlvo.map(id => {
+                      const filtro = filtrosInclusivos.find(f => f.id === id)
+                      return filtro ? (
+                        <span
+                          key={id}
+                          className={`px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r ${filtro.cor} text-white`}
+                        >
+                          {filtro.label}
+                        </span>
+                      ) : null
+                    })}
+                  </div>
+                </div>
+                <button
+                  onClick={() => setFiltrosPublicoAlvo([])}
+                  className="text-sm text-command-accent hover:text-command-accent-hover font-semibold"
+                >
+                  Limpar filtros
+                </button>
+              </div>
+            )}
+          </div>
+
           {/* Seção: Acontecendo Agora */}
           {eventosAcontecendoAgora.length > 0 && (
             <div className="mb-12">
@@ -202,6 +368,13 @@ function AgendaEventos() {
                             {getTipoLabel(evento.tipo)}
                           </span>
                         </div>
+
+                        {/* Badges de Público-Alvo */}
+                        {evento.publicoAlvo && evento.publicoAlvo.length > 0 && (
+                          <div className="absolute bottom-3 right-3 flex flex-col gap-1">
+                            {evento.publicoAlvo.slice(0, 2).map(publico => getPublicoAlvoBadge(publico))}
+                          </div>
+                        )}
                       </div>
 
                       {/* Conteúdo */}
@@ -212,6 +385,13 @@ function AgendaEventos() {
                         <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-4 line-clamp-2">
                           {evento.descricao}
                         </p>
+
+                        {/* Badges de Público-Alvo no conteúdo */}
+                        {evento.publicoAlvo && evento.publicoAlvo.length > 0 && (
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {evento.publicoAlvo.map(publico => getPublicoAlvoBadge(publico))}
+                          </div>
+                        )}
 
                         <div className="space-y-2 mb-4">
                           <div className="flex items-center gap-2 text-xs text-neutral-600 dark:text-neutral-400">
@@ -316,6 +496,13 @@ function AgendaEventos() {
                           {getTipoLabel(evento.tipo)}
                         </span>
                       </div>
+
+                      {/* Badges de Público-Alvo */}
+                      {evento.publicoAlvo && evento.publicoAlvo.length > 0 && (
+                        <div className="absolute bottom-3 right-3 flex flex-col gap-1">
+                          {evento.publicoAlvo.slice(0, 2).map(publico => getPublicoAlvoBadge(publico))}
+                        </div>
+                      )}
                     </div>
 
                     {/* Conteúdo Completo */}
@@ -326,6 +513,13 @@ function AgendaEventos() {
                       <p className="text-neutral-700 dark:text-neutral-300 text-sm mb-4 line-clamp-2 font-medium">
                         {evento.descricao}
                       </p>
+
+                      {/* Badges de Público-Alvo no conteúdo */}
+                      {evento.publicoAlvo && evento.publicoAlvo.length > 0 && (
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {evento.publicoAlvo.map(publico => getPublicoAlvoBadge(publico))}
+                        </div>
+                      )}
 
                       <div className="space-y-2 mb-4">
                         <div className="flex items-center gap-2 text-sm text-neutral-700 dark:text-neutral-300 font-medium">
@@ -398,6 +592,14 @@ function AgendaEventos() {
                 <p className="text-lg font-medium text-neutral-600 dark:text-neutral-400">
                   Nenhum evento encontrado com os filtros selecionados.
                 </p>
+                {filtrosPublicoAlvo.length > 0 && (
+                  <button
+                    onClick={() => setFiltrosPublicoAlvo([])}
+                    className="mt-4 text-command-accent hover:text-command-accent-hover font-semibold"
+                  >
+                    Limpar filtros inclusivos
+                  </button>
+                )}
               </div>
             )}
           </div>
