@@ -82,13 +82,13 @@ function SegurancaComunitaria() {
   }
 
   return (
-    <div className="h-full flex flex-col bg-command-bg">
-      <div className="p-6 border-b border-command-border">
-        <h1 className="text-4xl font-bold text-command-text mb-2 flex items-center gap-3">
-          <FiShield className="text-command-accent" />
+    <div className="h-full flex flex-col bg-white dark:bg-neutral-900">
+      <div className="p-6 border-b border-neutral-200 dark:border-neutral-700">
+        <h1 className="text-4xl font-bold text-neutral-900 dark:text-white mb-2 flex items-center gap-3">
+          <FiShield className="text-orange-500" />
           Segurança Comunitária Inteligente
         </h1>
-        <p className="text-command-text-muted">
+        <p className="text-neutral-900 dark:text-white-muted">
           Transforme o cidadão em sensor urbano anônimo e confiável
         </p>
 
@@ -113,7 +113,7 @@ function SegurancaComunitaria() {
           <select
             value={tipoAlerta}
             onChange={(e) => setTipoAlerta(e.target.value)}
-            className="px-4 py-2 rounded-lg bg-command-surface border border-command-border text-command-text"
+            className="px-4 py-2 rounded-lg bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl border border-neutral-200 dark:border-neutral-700 text-neutral-900 dark:text-white"
           >
             <option value="todos">Todos os Alertas</option>
             <option value="atividade-suspeita">Atividade Suspeita</option>
@@ -128,15 +128,15 @@ function SegurancaComunitaria() {
               onChange={(e) => setMostrarPreditivo(e.target.checked)}
               className="w-4 h-4 rounded"
             />
-            <span className="text-sm text-command-text">Mostrar Mapa Preditivo</span>
+            <span className="text-sm text-neutral-900 dark:text-white">Mostrar Mapa Preditivo</span>
           </label>
         </div>
       </div>
 
       {/* Mapa e Lista */}
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-6 p-6 overflow-hidden">
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-6 p-6 overflow-y-auto">
         {/* Mapa */}
-        <div className="bg-command-surface rounded-xl border border-command-border overflow-hidden">
+        <div className="bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl rounded-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
           <MapContainer
             center={[-15.7925, -47.8850]}
             zoom={14}
@@ -212,7 +212,7 @@ function SegurancaComunitaria() {
             {alertasFiltrados.map(alerta => (
               <div
                 key={alerta.id}
-                className="bg-command-surface rounded-xl p-6 border border-command-border"
+                className="bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl rounded-xl p-6 border border-neutral-200 dark:border-neutral-700"
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-3">
@@ -225,7 +225,7 @@ function SegurancaComunitaria() {
                       {alerta.tipo === 'assalto' && <FiAlertOctagon className="w-6 h-6" style={{ color: coresAlerta[alerta.tipo] }} />}
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-command-text">{getTipoNome(alerta.tipo)}</h3>
+                      <h3 className="text-lg font-bold text-neutral-900 dark:text-white">{getTipoNome(alerta.tipo)}</h3>
                       <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium mt-1 ${getStatusColor(alerta.status)}`}>
                         {getStatusNome(alerta.status)}
                       </span>
@@ -233,15 +233,15 @@ function SegurancaComunitaria() {
                   </div>
                 </div>
 
-                <p className="text-sm text-command-text-muted mb-4">{alerta.descricao}</p>
+                <p className="text-sm text-neutral-900 dark:text-white-muted mb-4">{alerta.descricao}</p>
 
                 <div className="space-y-2 text-sm">
-                  <div className="flex items-center gap-2 text-command-text-muted">
-                    <FiMapPin className="text-command-accent" />
+                  <div className="flex items-center gap-2 text-neutral-900 dark:text-white-muted">
+                    <FiMapPin className="text-orange-500" />
                     <span>Quadra {alerta.quadra.replace('scs-', '')}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-command-text-muted">
-                    <FiClock className="text-command-accent" />
+                  <div className="flex items-center gap-2 text-neutral-900 dark:text-white-muted">
+                    <FiClock className="text-orange-500" />
                     <span>{new Date(alerta.data).toLocaleString('pt-BR')}</span>
                   </div>
                   {alerta.correlacao.eventosAtivos > 0 && (
@@ -258,7 +258,7 @@ function SegurancaComunitaria() {
 
           {alertasFiltrados.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-command-text-muted">Nenhum alerta encontrado.</p>
+              <p className="text-neutral-900 dark:text-white-muted">Nenhum alerta encontrado.</p>
             </div>
           )}
         </div>

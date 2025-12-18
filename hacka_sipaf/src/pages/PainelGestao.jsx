@@ -94,62 +94,62 @@ function PainelGestao() {
   }, [estatisticas])
 
   return (
-    <div className="h-full overflow-auto bg-command-bg p-6">
+    <div className="h-full overflow-auto bg-white dark:bg-neutral-900 p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-command-text mb-2 flex items-center gap-3">
-            <FiBarChart2 className="text-command-accent" />
+          <h1 className="text-4xl font-bold text-neutral-900 dark:text-white mb-2 flex items-center gap-3">
+            <FiBarChart2 className="text-orange-500" />
             Painel de Gestão com IA
           </h1>
-          <p className="text-command-text-muted">
+          <p className="text-neutral-900 dark:text-white-muted">
             Apoiar decisões baseadas em dados reais do território
           </p>
         </div>
 
         {/* Cards de Estatísticas */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="bg-command-surface rounded-xl p-6 border border-command-border">
+          <div className="bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl rounded-xl p-6 border border-neutral-200 dark:border-neutral-700">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-command-text-muted">Eventos Ativos</span>
-              <FiCalendar className="text-command-accent" />
+              <span className="text-sm text-neutral-900 dark:text-white-muted">Eventos Ativos</span>
+              <FiCalendar className="text-orange-500" />
             </div>
-            <div className="text-3xl font-bold text-command-text">{eventosMock.length}</div>
+            <div className="text-3xl font-bold text-neutral-900 dark:text-white">{eventosMock.length}</div>
             <div className="flex items-center gap-1 mt-2 text-sm text-green-500">
               <FiTrendingUp />
               <span>+12% esta semana</span>
             </div>
           </div>
 
-          <div className="bg-command-surface rounded-xl p-6 border border-command-border">
+          <div className="bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl rounded-xl p-6 border border-neutral-200 dark:border-neutral-700">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-command-text-muted">Taxa de Ocupação</span>
-              <FiHome className="text-command-accent" />
+              <span className="text-sm text-neutral-900 dark:text-white-muted">Taxa de Ocupação</span>
+              <FiHome className="text-orange-500" />
             </div>
-            <div className="text-3xl font-bold text-command-text">{estatisticas.taxaOcupacao}%</div>
-            <div className="flex items-center gap-1 mt-2 text-sm text-command-text-muted">
+            <div className="text-3xl font-bold text-neutral-900 dark:text-white">{estatisticas.taxaOcupacao}%</div>
+            <div className="flex items-center gap-1 mt-2 text-sm text-neutral-900 dark:text-white-muted">
               <span>{estatisticas.comerciosAtivos} ativos / {estatisticas.imoveisVazios} vazios</span>
             </div>
           </div>
 
-          <div className="bg-command-surface rounded-xl p-6 border border-command-border">
+          <div className="bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl rounded-xl p-6 border border-neutral-200 dark:border-neutral-700">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-command-text-muted">Engajamento QR</span>
-              <FiMapPin className="text-command-accent" />
+              <span className="text-sm text-neutral-900 dark:text-white-muted">Engajamento QR</span>
+              <FiMapPin className="text-orange-500" />
             </div>
-            <div className="text-3xl font-bold text-command-text">{estatisticas.engajamentoTotal}</div>
+            <div className="text-3xl font-bold text-neutral-900 dark:text-white">{estatisticas.engajamentoTotal}</div>
             <div className="flex items-center gap-1 mt-2 text-sm text-green-500">
               <FiTrendingUp />
               <span>Scans totais</span>
             </div>
           </div>
 
-          <div className="bg-command-surface rounded-xl p-6 border border-command-border">
+          <div className="bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl rounded-xl p-6 border border-neutral-200 dark:border-neutral-700">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-command-text-muted">Alertas de Segurança</span>
-              <FiShield className="text-command-accent" />
+              <span className="text-sm text-neutral-900 dark:text-white-muted">Alertas de Segurança</span>
+              <FiShield className="text-orange-500" />
             </div>
-            <div className="text-3xl font-bold text-command-text">{alertasMock.length}</div>
+            <div className="text-3xl font-bold text-neutral-900 dark:text-white">{alertasMock.length}</div>
             <div className="flex items-center gap-1 mt-2 text-sm text-red-500">
               <FiTrendingDown />
               <span>-5% esta semana</span>
@@ -158,11 +158,11 @@ function PainelGestao() {
         </div>
 
         {/* Recomendações de IA */}
-        <div className="bg-command-surface rounded-xl p-6 border border-command-border mb-8">
+        <div className="bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl rounded-xl p-6 border border-neutral-200 dark:border-neutral-700 mb-8">
           <div className="flex items-center gap-2 mb-4">
-            <FiAlertCircle className="text-command-accent" />
-            <h2 className="text-xl font-bold text-command-text">Recomendações de IA</h2>
-            <span className="text-xs text-command-text-muted">(A IA recomenda, nunca decide)</span>
+            <FiAlertCircle className="text-orange-500" />
+            <h2 className="text-xl font-bold text-neutral-900 dark:text-white">Recomendações de IA</h2>
+            <span className="text-xs text-neutral-900 dark:text-white-muted">(A IA recomenda, nunca decide)</span>
           </div>
           <div className="space-y-3">
             {recomendacoes.map((rec, idx) => (
@@ -185,12 +185,12 @@ function PainelGestao() {
                         {rec.prioridade === 'alta' ? 'Alta Prioridade' : 'Média Prioridade'}
                       </span>
                       {rec.quadra && (
-                        <span className="px-2 py-1 rounded text-xs bg-command-accent/20 text-command-accent">
+                        <span className="px-2 py-1 rounded text-xs bg-orange-500/20 text-orange-500">
                           {rec.quadra}
                         </span>
                       )}
                     </div>
-                    <p className="text-sm text-command-text">{rec.mensagem}</p>
+                    <p className="text-sm text-neutral-900 dark:text-white">{rec.mensagem}</p>
                   </div>
                 </div>
               </div>
@@ -201,8 +201,8 @@ function PainelGestao() {
         {/* Gráficos */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           {/* Eventos por Quadra */}
-          <div className="bg-command-surface rounded-xl p-6 border border-command-border">
-            <h3 className="text-lg font-bold text-command-text mb-4">Eventos por Quadra</h3>
+          <div className="bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl rounded-xl p-6 border border-neutral-200 dark:border-neutral-700">
+            <h3 className="text-lg font-bold text-neutral-900 dark:text-white mb-4">Eventos por Quadra</h3>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={dadosEventosQuadra}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -216,8 +216,8 @@ function PainelGestao() {
           </div>
 
           {/* Engajamento */}
-          <div className="bg-command-surface rounded-xl p-6 border border-command-border">
-            <h3 className="text-lg font-bold text-command-text mb-4">Engajamento por Evento</h3>
+          <div className="bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl rounded-xl p-6 border border-neutral-200 dark:border-neutral-700">
+            <h3 className="text-lg font-bold text-neutral-900 dark:text-white mb-4">Engajamento por Evento</h3>
             <ResponsiveContainer width="100%" height={300}>
               <LineChart data={dadosEngajamento}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -234,30 +234,30 @@ function PainelGestao() {
         </div>
 
         {/* Integrações GDF */}
-        <div className="bg-command-surface rounded-xl p-6 border border-command-border">
-          <h3 className="text-lg font-bold text-command-text mb-4">Integrações Estratégicas com o GDF</h3>
+        <div className="bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl rounded-xl p-6 border border-neutral-200 dark:border-neutral-700">
+          <h3 className="text-lg font-bold text-neutral-900 dark:text-white mb-4">Integrações Estratégicas com o GDF</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 rounded-lg bg-blue-500/10 border border-blue-500/30">
-              <h4 className="font-semibold text-command-text mb-2">Agenda Oficial do GDF</h4>
-              <p className="text-sm text-command-text-muted">
+              <h4 className="font-semibold text-neutral-900 dark:text-white mb-2">Agenda Oficial do GDF</h4>
+              <p className="text-sm text-neutral-900 dark:text-white-muted">
                 Sincronização automática de eventos institucionais (quando disponível)
               </p>
             </div>
             <div className="p-4 rounded-lg bg-green-500/10 border border-green-500/30">
-              <h4 className="font-semibold text-command-text mb-2">Administração Regional</h4>
-              <p className="text-sm text-command-text-muted">
+              <h4 className="font-semibold text-neutral-900 dark:text-white mb-2">Administração Regional</h4>
+              <p className="text-sm text-neutral-900 dark:text-white-muted">
                 Validação de eventos, comércios e espaços públicos do SCS
               </p>
             </div>
             <div className="p-4 rounded-lg bg-purple-500/10 border border-purple-500/30">
-              <h4 className="font-semibold text-command-text mb-2">Dados Abertos do GDF</h4>
-              <p className="text-sm text-command-text-muted">
+              <h4 className="font-semibold text-neutral-900 dark:text-white mb-2">Dados Abertos do GDF</h4>
+              <p className="text-sm text-neutral-900 dark:text-white-muted">
                 Uso de bases públicas para enriquecer análises
               </p>
             </div>
             <div className="p-4 rounded-lg bg-orange-500/10 border border-orange-500/30">
-              <h4 className="font-semibold text-command-text mb-2">SEI/GDF (Futuro)</h4>
-              <p className="text-sm text-command-text-muted">
+              <h4 className="font-semibold text-neutral-900 dark:text-white mb-2">SEI/GDF (Futuro)</h4>
+              <p className="text-sm text-neutral-900 dark:text-white-muted">
                 Registro interno de eventos de grande porte e solicitações de apoio
               </p>
             </div>

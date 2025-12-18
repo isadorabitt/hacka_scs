@@ -5,6 +5,21 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SCS Conecta - Super App Setor Comercial Sul</title>
+    <script>
+      // Aplicar tema antes do React renderizar para evitar flash
+      (function() {
+        const savedTheme = localStorage.getItem('scs-theme') || 'light';
+        const root = document.documentElement;
+        root.setAttribute('data-theme', savedTheme);
+        if (savedTheme === 'dark') {
+          root.classList.add('dark');
+          root.classList.remove('light');
+        } else {
+          root.classList.add('light');
+          root.classList.remove('dark');
+        }
+      })();
+    </script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
